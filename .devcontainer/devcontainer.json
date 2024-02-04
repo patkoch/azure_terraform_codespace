@@ -1,0 +1,4 @@
+{
+    "name": "azure_terraform",
+    "build": { "dockerfile": "Dockerfile" }
+}
