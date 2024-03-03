@@ -6,7 +6,7 @@ Almost from scratch, I would like to describe the necessary steps for creating a
 
 To create a new Codespace, I’ll click on the “Remote Explorer” icon in Visual Studio Code, then I’ll switch to “GitHub Codespace”. Next I have to click on the “+” button:
 
-<p align="center">
+<p align="left">
   <img src="pictures/06_create_new_cs.png" width="40%" height="30%" title="create_new_cs">
 </p>
 
@@ -38,4 +38,26 @@ That is the view in Visual Studio Code:
 
 <p align="center">
   <img src="pictures/10_finished_cs.png" width="60%" height="40%" title="10_finished_cs">
+</p>
+
+I’m going to verify that the desired tools are installed. Therefore, I’ll enter “az” in the terminal:
+
+<p align="center">
+  <img src="pictures/11_finished_cs_azure.png" width="60%" height="40%" title="11_finished_cs_azure">
+</p>
+
+In addition, I also prove that Terraform was provided properly by typing “terraform”:
+
+<p align="center">
+  <img src="pictures/12_finished_cs_terraform.png" width="60%" height="40%" title="12_finished_cs_terraform">
+</p>
+
+So my Codespace named “obscure funicular” is ready, which includes my customized dev container, and I would be ready to start my development using Terraform on Azure.
+
+## Stop your Codespace
+
+Don’t forget to stop the Codespace, if you don’t need it:
+
+<p align="center">
+  <img src="pictures/13_stop_cs.png" width="60%" height="40%" title="13_stop_cs">
 </p>
