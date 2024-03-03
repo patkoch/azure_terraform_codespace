@@ -31,25 +31,25 @@ After that, the Codespace will be created:
 After the successful creation, I can recognize that an active Codespace is available for my repository:
 
 <p align="left">
-  <img src="pictures/09_git_repo_cs.png" width="60%" height="40%" title="09_git_repo_cs">
+  <img src="pictures/09_git_repo_cs.png" width="80%" height="60%" title="09_git_repo_cs">
 </p>
 
 That is the view in Visual Studio Code:
 
 <p align="left">
-  <img src="pictures/10_finished_cs.png" width="60%" height="40%" title="10_finished_cs">
+  <img src="pictures/10_finished_cs.png" width="80%" height="60%" title="10_finished_cs">
 </p>
 
 I’m going to verify that the desired tools are installed. Therefore, I’ll enter “az” in the terminal:
 
 <p align="left">
-  <img src="pictures/11_finished_cs_azure.png" width="60%" height="40%" title="11_finished_cs_azure">
+  <img src="pictures/11_finished_cs_azure.png" width="80%" height="60%" title="11_finished_cs_azure">
 </p>
 
 In addition, I also prove that Terraform was provided properly by typing “terraform”:
 
 <p align="left">
-  <img src="pictures/12_finished_cs_terraform.png" width="60%" height="40%" title="12_finished_cs_terraform">
+  <img src="pictures/12_finished_cs_terraform.png" width="80%" height="60%" title="12_finished_cs_terraform">
 </p>
 
 So my Codespace named “obscure funicular” is ready, which includes my customized dev container, and I would be ready to start my development using Terraform on Azure.
@@ -59,5 +59,5 @@ So my Codespace named “obscure funicular” is ready, which includes my custom
 Don’t forget to stop the Codespace, if you don’t need it:
 
 <p align="left">
-  <img src="pictures/13_stop_cs.png" width="60%" height="40%" title="13_stop_cs">
+  <img src="pictures/13_stop_cs.png" width="80%" height="60%" title="13_stop_cs">
 </p>
