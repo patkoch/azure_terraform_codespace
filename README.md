@@ -25,7 +25,11 @@ As the last step, I’ll choose which instance I would like to use. I’ll choos
 After that, the Codespace will be created:
 
 <p align="center">
-  <img src="pictures/09_git_repo_cs.png" width="60%" height="40%" title="09_git_repo_cs">
+  <img src="pictures/08_building_dev_container.png" width="60%" height="40%" title="08_building_dev_container">
 </p>
 
 After the successful creation, I can recognize that an active Codespace is available for my repository:
+
+<p align="center">
+  <img src="pictures/09_git_repo_cs.png" width="60%" height="40%" title="09_git_repo_cs">
+</p>
