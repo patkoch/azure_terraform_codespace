@@ -1,9 +1,9 @@
 {
-    "name": "My Terraform on Azure Dev Container",
-    "build": { "dockerfile": "Dockerfile" },
-    "extensions": [
-      "hashicorp.terraform",
-      "ms-azuretools.vscode-azureterraform",
-      "ms-vscode.azure-account",
-      "ms-azuretools.vscode-azurecli"
+  "name": "My Terraform on Azure Dev Container",
+  "build": { "dockerfile": "Dockerfile" },
+  "extensions": [
+      "hashicorp.terraform",  // Terraform extension
+      "ms-azuretools.vscode-azureaccount",  // Azure extension
+      "ms-vscode-remote.vscode-remote-extensionspack"  // Recommended extensions pack for remote development
+    ]
 }
