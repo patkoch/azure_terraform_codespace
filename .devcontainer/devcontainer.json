@@ -5,5 +5,5 @@
       "hashicorp.terraform",
       "ms-azuretools.vscode-azureterraform",
       "ms-vscode.azure-account",
-      "ms-azuretools.vscode-azurecli",
+      "ms-azuretools.vscode-azurecli"
 }
