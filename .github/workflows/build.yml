@@ -27,3 +27,4 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/dev-container-terraform:${{ github.run_number }} .
+        working-directory: .devcontainer
