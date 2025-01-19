@@ -26,7 +26,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build Docker image
-        if: github.ref == 'refs/heads/main'
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/dev-container-terraform:${{ github.run_number }} .
         working-directory: .devcontainer
     
