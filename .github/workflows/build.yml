@@ -1,4 +1,4 @@
-name: Build Dockerfile
+name: Build Dockerfile and Push to Docker Hub
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
