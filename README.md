@@ -1,6 +1,12 @@
 ﻿# Create a dev container in your GitHub Codespace including the Azure CLI and Terraform
 
-Almost from scratch, I would like to describe the necessary steps for creating a dev container, which includes the Azure CLI and Terraform.
+Almost from scratch, I would like to describe the necessary steps for creating a dev container, which includes the Azure and Terraform CLI.
+
+## GitHub Action Workflow
+
+Current state of running the workflow, which builds and pushes the Container Image
+
+[![Build Dockerfile and Push to Docker Hub](https://github.com/patkoch/azure_terraform_codespace/actions/workflows/build.yml/badge.svg)](https://github.com/patkoch/azure_terraform_codespace/actions/workflows/build.yml)
 
 ## Create a Codespace using the provided configuration files
 
