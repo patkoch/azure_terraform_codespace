@@ -1,9 +1,35 @@
 {
   "name": "My Terraform on Azure Dev Container",
   "build": { "dockerfile": "Dockerfile" },
-  "extensions": [
-      "hashicorp.terraform",  
-      "ms-azuretools.vscode-azureaccount",  
-      "ms-vscode-remote.vscode-remote-extensionspack"
-    ]
+
+  // Post-create checks to confirm tools are available (won't fail the build thanks to || true)
+  "postCreateCommand": "terraform -version || true; tflint --version || true",
+
+  // VS Code customizations (extensions and workspace settings for the editor)
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "mauve.terraform",
+        "ms-azuretools.vscode-azureaccount",
+        "ms-vscode-remote.vscode-remote-extensionspack"
+      ],
+      "settings": {
+        "[terraform]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": true,
+          "editor.formatOnSaveMode": "file"
+        },
+        "[terraform-vars]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": true,
+          "editor.formatOnSaveMode": "file"
+        },
+        "terraform.experimentalFeatures.prefillRequiredFields": true,
+        "terraform.codelens.referenceCount": true,
+        // If Terraform is installed in a custom path inside the container, override this
+        "terraform.languageServer.terraform.path": "/usr/local/bin/terraform"
+      }
+    }
+  }
 }
