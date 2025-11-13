@@ -13,14 +13,15 @@ ENV TZ=Etc/UTC
 # - install latest TFLint binary from GitHub releases
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        ca-certificates \
-        curl \
-        gnupg \
-        lsb-release \
-        software-properties-common \
-        unzip \
-        wget \
-        git && \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release \
+    software-properties-common \
+    unzip \
+    wget \
+    git \
+    openssh-client && \
     \
     # Install Azure CLI (official script). No sudo needed in container.
     curl -sL https://aka.ms/InstallAzureCLIDeb | bash && \
