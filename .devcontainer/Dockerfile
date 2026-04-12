@@ -10,14 +10,13 @@ ENV TZ=Etc/UTC
 # - install Azure CLI using official script (run as root inside container)
 # - add HashiCorp repo using a signed keyring (apt-key is deprecated)
 # - install terraform from HashiCorp repo
-# - install latest TFLint binary from GitHub releases
+# - install latest TFLint binary from GitHub releases (architecture-aware)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
     gnupg \
     lsb-release \
-    software-properties-common \
     unzip \
     wget \
     git \
@@ -32,16 +31,19 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --no-install-recommends terraform && \
     \
-    # Install latest TFLint release (linux amd64)
+    # Install latest TFLint release (architecture-aware: amd64 / arm64)
     TFLINT_VER=$(curl -s https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -Po '"tag_name": "\K[^"]+') && \
-    curl -Lo /tmp/tflint.zip "https://github.com/terraform-linters/tflint/releases/download/${TFLINT_VER}/tflint_linux_amd64.zip" && \
+    ARCH=$(dpkg --print-architecture) && \
+    curl -Lo /tmp/tflint.zip "https://github.com/terraform-linters/tflint/releases/download/${TFLINT_VER}/tflint_linux_${ARCH}.zip" && \
     unzip /tmp/tflint.zip -d /tmp && mv /tmp/tflint /usr/local/bin/tflint && chmod +x /usr/local/bin/tflint && rm -rf /tmp/tflint* && \
     \
     # Cleanup apt caches to keep image small
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Provide metadata
-LABEL org.opencontainers.image.source="https://github.com/patkoch/azure_terraform_codespace" \
-      org.opencontainers.image.description="Devcontainer base image with Azure CLI, Terraform, and TFLint"
+# Create a non-root user 'vscode' as recommended for Dev Containers
+RUN groupadd --gid 1000 vscode && \
+    useradd --uid 1000 --gid vscode --shell /bin/bash --create-home vscode
 
-# NOTE: Consider adding a non-root user or exposing versions via ARGs depending on how the devcontainer is used.
+# Provide metadata
+LABEL org.opencontainers.image.source="https://github.com/patkoch/azure-terraform-codespace" \
+      org.opencontainers.image.description="Devcontainer base image with Azure CLI, Terraform, and TFLint"

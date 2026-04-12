@@ -2,6 +2,9 @@
   "name": "My Terraform on Azure Dev Container",
   "build": { "dockerfile": "Dockerfile" },
 
+  // Run as non-root user defined in the Dockerfile
+  "remoteUser": "vscode",
+
   // Post-create checks to confirm tools are available (won't fail the build thanks to || true)
   "postCreateCommand": "terraform -version || true; tflint --version || true",
 
@@ -9,10 +12,10 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        // Official HashiCorp Terraform extension (replaces the deprecated mauve.terraform)
         "hashicorp.terraform",
-        "mauve.terraform",
-        "ms-azuretools.vscode-azureaccount",
-        "ms-vscode-remote.vscode-remote-extensionspack"
+        // Azure account management (sign-in, subscription selection)
+        "ms-azuretools.vscode-azureaccount"
       ],
       "settings": {
         "[terraform]": {
@@ -27,7 +30,7 @@
         },
         "terraform.experimentalFeatures.prefillRequiredFields": true,
         "terraform.codelens.referenceCount": true,
-        // If Terraform is installed in a custom path inside the container, override this
+        // Terraform binary path as installed inside the container
         "terraform.languageServer.terraform.path": "/usr/local/bin/terraform"
       }
     }
