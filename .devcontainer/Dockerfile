@@ -11,7 +11,7 @@ ENV TZ=Etc/UTC
 # - add HashiCorp repo using a signed keyring (apt-key is deprecated)
 # - install terraform from HashiCorp repo
 # - install latest TFLint binary from GitHub releases (architecture-aware)
-ARG TFLINT_VERSION=v0.55.1
+ARG TFLINT_VERSION=v0.62.0
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     ca-certificates \
