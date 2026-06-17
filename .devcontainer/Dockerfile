@@ -11,6 +11,7 @@ ENV TZ=Etc/UTC
 # - add HashiCorp repo using a signed keyring (apt-key is deprecated)
 # - install terraform from HashiCorp repo
 # - install latest TFLint binary from GitHub releases (architecture-aware)
+ARG TFLINT_VERSION=v0.62.0
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -31,10 +32,9 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --no-install-recommends terraform && \
     \
-    # Install latest TFLint release (architecture-aware: amd64 / arm64)
-    TFLINT_VER=$(curl -s https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -Po '"tag_name": "\K[^"]+') && \
+    # Install TFLint (pinned version to avoid GitHub API rate limits)
     ARCH=$(dpkg --print-architecture) && \
-    curl -Lo /tmp/tflint.zip "https://github.com/terraform-linters/tflint/releases/download/${TFLINT_VER}/tflint_linux_${ARCH}.zip" && \
+    curl -Lo /tmp/tflint.zip "https://github.com/terraform-linters/tflint/releases/download/${TFLINT_VERSION}/tflint_linux_${ARCH}.zip" && \
     unzip /tmp/tflint.zip -d /tmp && mv /tmp/tflint /usr/local/bin/tflint && chmod +x /usr/local/bin/tflint && rm -rf /tmp/tflint* && \
     \
     # Cleanup apt caches to keep image small
