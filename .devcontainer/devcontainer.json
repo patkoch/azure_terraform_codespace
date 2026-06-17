@@ -1,21 +1,25 @@
 {
-  "name": "My Terraform on Azure Dev Container",
-  "build": { "dockerfile": "Dockerfile" },
+  "name": "Azure + Terraform Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
 
-  // Run as non-root user defined in the Dockerfile
+  // Run as the non-root user that ships with the base image.
   "remoteUser": "vscode",
 
-  // Post-create checks to confirm tools are available (won't fail the build thanks to || true)
-  "postCreateCommand": "terraform -version || true; tflint --version || true",
+  // Confirm the toolchain is available once the container is created.
+  // `|| true` keeps Codespace creation from failing if a version command
+  // returns a non-zero exit code for any reason.
+  "postCreateCommand": "az version || true; terraform -version || true; tflint --version || true",
 
-  // VS Code customizations (extensions and workspace settings for the editor)
   "customizations": {
     "vscode": {
       "extensions": [
-        // Official HashiCorp Terraform extension (replaces the deprecated mauve.terraform)
+        // Official HashiCorp Terraform extension (language server, fmt, etc.)
         "hashicorp.terraform",
-        // Azure account management (sign-in, subscription selection)
-        "ms-azuretools.vscode-azureaccount"
+        // Modern Azure Resources extension (replaces the deprecated
+        // `ms-vscode.azure-account` / `ms-azuretools.vscode-azureaccount`).
+        "ms-azuretools.vscode-azureresourcegroups"
       ],
       "settings": {
         "[terraform]": {
@@ -29,9 +33,7 @@
           "editor.formatOnSaveMode": "file"
         },
         "terraform.experimentalFeatures.prefillRequiredFields": true,
-        "terraform.codelens.referenceCount": true,
-        // Terraform binary path as installed inside the container
-        "terraform.languageServer.terraform.path": "/usr/local/bin/terraform"
+        "terraform.codelens.referenceCount": true
       }
     }
   }
