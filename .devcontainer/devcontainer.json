@@ -8,9 +8,7 @@
   "remoteUser": "vscode",
 
   // Confirm the toolchain is available once the container is created.
-  // `|| true` keeps Codespace creation from failing if a version command
-  // returns a non-zero exit code for any reason.
-  "postCreateCommand": "az version || true; terraform -version || true; tflint --version || true",
+  "postCreateCommand": "az version && terraform -version && tflint --version && git --version",
 
   "customizations": {
     "vscode": {
