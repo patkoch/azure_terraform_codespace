@@ -2,14 +2,14 @@
 # It already ships with a non-root `vscode` user (UID 1000), common dev
 # tools (git, curl, gnupg, sudo, etc.) and is the recommended base for
 # GitHub Codespaces. This avoids UID conflicts and most user-setup issues.
-FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
+FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
 # Use noninteractive front-end for automated builds.
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Pin TFLint version for reproducible Codespace builds.
 # Bump this explicitly when you want to upgrade.
-ARG TFLINT_VERSION=v0.62.0
+ARG TFLINT_VERSION=v0.64.0
 
 # Install Azure CLI, Terraform and TFLint.
 # - Azure CLI is installed from the official Microsoft APT repository
@@ -61,7 +61,7 @@ RUN set -eux; \
 
 # Smoke-test that the binaries are installed and on PATH at build time.
 # If any of these fail, the image build fails fast with a clear error.
-RUN az version && terraform -version && tflint --version
+RUN az version && terraform -version && tflint --version && git --version
 
 # Default to the non-root `vscode` user provided by the base image.
 USER vscode
